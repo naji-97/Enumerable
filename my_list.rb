@@ -7,8 +7,8 @@ class MyList
     @list = elements
   end
 
-  def each
-    @list.each { |item| yield item }
+  def each(&block)
+    @list.each { |item| block.call(item) }
   end
 end
 
@@ -18,4 +18,4 @@ puts(list.all? { |e| e < 5 })
 puts(list.all? { |e| e > 5 })
 puts(list.any? { |e| e == 2 })
 p(list.any? { |e| e == 5 })
-p(list.filter { |e| e.even? })
+p(list.filter(&:even?))
